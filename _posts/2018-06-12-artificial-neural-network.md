@@ -7,13 +7,13 @@ comments: true
 
 # Artificial Neural Network
 
-인공신경망은 뉴런의 시냅스 결합으로 네트워크를 형성한 인공 뉴런(노드)이 학습을 통해 시냅스 결합 세기를 변화시켜, 문제 해결 능력을 가지는 모델 전반을 가리킨다.  
+ 인공신경망은 뉴런의 시냅스 결합으로 네트워크를 형성한 인공 뉴런(노드)이 학습을 통해 시냅스 결합 세기를 변화시켜, 문제 해결 능력을 가지는 모델 전반을 가리킨다.  
 
-인공신경망에는 지도(정답)의 입력에 의해서 문제에 최적화되어 가는 Supervised learning과 지도를 필요로 하지 않는 Unsupervised learning이 있다. 명확한 해답이 있는 경우에는 supervised learning이, 데이터 클러스터링에는 unsupervised learning이 이용된다.  
+ 인공신경망에는 지도(정답)의 입력에 의해서 문제에 최적화되어 가는 Supervised learning과 지도를 필요로 하지 않는 Unsupervised learning이 있다. 명확한 해답이 있는 경우에는 supervised learning이, 데이터 클러스터링에는 unsupervised learning이 이용된다.  
 
-'인공신경망'에서 *망*은 각 시스템에 있는 여러 층의 뉴런 간의 연결을 의미한다. 예를 들어 세 층이 있는 시스템이 있다면, 첫 번째 층은 시냅스를 통해 두 번째 층의 뉴런들로 데이터를 보내는 입력 뉴런들이 있고, 더 많은 시냅스를 통해 세 번째 층의 출력 뉴런으로 신호를 보내는 식이다.  
+ '인공신경망'에서 *망*은 각 시스템에 있는 여러 층의 뉴런 간의 연결을 의미한다. 예를 들어 세 층이 있는 시스템이 있다면, 첫 번째 층은 시냅스를 통해 두 번째 층의 뉴런들로 데이터를 보내는 입력 뉴런들이 있고, 더 많은 시냅스를 통해 세 번째 층의 출력 뉴런으로 신호를 보내는 식이다.  
 
-인공신경망은 보통 세 가지의 인자를 이용해 정의된다.
+ 인공신경망은 보통 세 가지의 인자를 이용해 정의된다.
 
 1. 다른 층의 뉴런들 사이의 연결 패턴
 2. 연결의 가중치를 갱신하는 학습 과정
@@ -51,10 +51,10 @@ comments: true
 - $$o_j(t)$$ 는 뉴런 $$j$$의 output.
 
 
-  $$
+$$
   o_j = f(p_j, \theta_j)\\
   o_j = f(\sum_ip_j(t)-\theta_j)
-  $$
+$$
 
 
 
@@ -96,7 +96,7 @@ $$
 $$
 
 
-$${\partial{L}\over\partial{x}}$$ 는 Loss로 부터 흘러들어온 gradient이고, $${\partial{y}\over\partial{x}}$$ 는 현재 입력 값에 대한 현재 연산결과의 변화량, 즉, Local gradient이다. 즉, 현재 입력 $$x$$ 에 대한 Loss 의 변화량은 흘러들어온 gradient 에 local gradient를 곱해서 구한다는 것이다.
+$${\partial{L}\over\partial{x}}$$ 는 Loss로 부터 흘러들어온 gradient이고, $$\partial{y}\over\partial{x}$$ 는 현재 입력 값에 대한 현재 연산결과의 변화량, 즉, Local gradient이다. 즉, 현재 입력 $$x$$ 에 대한 Loss 의 변화량은 흘러들어온 gradient 에 local gradient를 곱해서 구한다는 것이다.
 
 
 
@@ -169,37 +169,37 @@ $$
 3. 제시된 입력을 이용하여 Hidden layer의 $$j$$번째 뉴런으로의 입력은 다음과 같다.
 
 
-   $$
+$$
    Input_{pj} = \sum_{i}X_{pi}*W_{ij}-\theta_{j}
-   $$
+$$
 
 4. Activation function을 사용하여 Hidden layer의 출력 $$O_{pj}$$ 를 계산한다.
 
 
-   $$
+$$
    O_{pj} = f(Input_{pj})
-   $$
+$$
 
 5. Hidden layer의 출력을 이용하여 Output layer $$k$$번째 뉴런으로의 입력은 다음과 같다.
 
 
-   $$
+$$
    Input_{pk} = \sum_{j}O_{pj}*W_{jk}-\theta_{k}
-   $$
+$$
 
 6. Activation function을 사용하여 Output layer의 출력 $$O_{pk}$$를 계산한다.
 
 
-   $$
+$$
    O_{pk} = f(Input_{pk})
-   $$
+$$
 
 7. 출력 $$O_{pk}$$와 목표 출력 $$d_{pk}$$ 값을 비교하여 $$Error \ function= E_p$$  를 구한다.
 
 
-   $$
+$$
    E_p = \frac{1}{2}\sum_{k}(d_{pk}-O_{pk})^2
-   $$
+$$
 
 8. Neural network의 weight에 대한 gradient를 구한다. (각 가중치 $$W$$에 대한 $$E_p$$의 변화율)
 
@@ -209,75 +209,70 @@ $$
 
    Hidden layer의 $$j$$ 뉴런에서 output layer $$k$$ 뉴런을 연결하는 weight $$W_{jk}$$ 에 대한 $$E_p$$의 변화율은 다음과 같다.
 
-   
-   $$
-   -{\partial{E_p}\over\partial{W_{jk}}} = {\partial{E_p}\over\partial{O_{pk}}}{\partial{O_{pk}}\over\partial({Input_{pk})}}{\partial({Input_{pk}})\over\partial{W_{jk}}} \ \ \ \ \ \because \mbox{chain rule}
-   $$
-   
+  
+  $$
+  -{\partial{E_p}\over\partial{W_{jk}}} = {\partial{E_p}\over\partial{O_{pk}}}{\partial{O_{pk}}\over\partial({Input_{pk})}}{\partial({Input_{pk}})\over\partial{W_{jk}}} \ \ \ \ \ \because \mbox{chain rule}
+  $$
+  
 
    $$k$$ 는 $$W_{jk}$$의 하나의 $$k$$만이 relate 되어 있으므로(하나의 $$k$$만 error에 영향),
 
-   
-   $$
-   -{\partial{E_p}\over\partial{W_{jk}}} = (d_{pk}-O_{pk})f'(Input_{pk})O_{pj}
-   $$
-   
+  
+  $$
+  -{\partial{E_p}\over\partial{W_{jk}}} = (d_{pk}-O_{pk})f'(Input_{pk})O_{pj}
+  $$
+  
 
-   이고, activation function이 $$sigmoid function$$일 경우,
+  이고, activation function이 $$sigmoid function$$일 경우,
 
-   
-
-   $$
-   y=\frac{1}{1+e^{-x}}  \ \  \ \therefore {{\partial{y}}\over\partial{x}} = y(1-y)
-   $$
-
-   $$
-   -{\partial{E_p}\over\partial{W_{jk}}} = (d_{pk}-O_{pk})O_{pk}(1-O_{pk})O_{pj}\\=\delta_{pk}*O_{pj} \\(\because \delta_{pk} = (d_{pk}-O_{pk})O_{pk}(1-O_{pk}))
-   $$
-
-   
+  
+  $$
+  y=\frac{1}{1+e^{-x}}  \ \  \ \therefore {\partial{y}\over\partial{x}} = y(1-y)
+  $$
+  
+  $$
+  -{\partial{E_p}\over\partial{W_{jk}}} = (d_{pk}-O_{pk})O_{pk}(1-O_{pk})O_{pj}\\=\delta_{pk}*O_{pj} \\(\because \delta_{pk} = (d_{pk}-O_{pk})O_{pk}(1-O_{pk}))
+  $$
+  
 
    $${\partial{E_p}\over\partial{W_{ij}}}$$ 는 $$W_{ij}$$ 가 최종 $$Loss function$$에 얼마나 영향을 주는가를 나타내는 값이다. 
 
-    
+  
 
-   ![backpropagation_step2.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/backpropagation_step2.png?raw=true)
+  ![backpropagation_step2](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/backpropagation_step2.png?raw=true)
 
-    그림에서, $$W_{ij}$$는 $$Loss \ function$$ $$E_p$$에 모든 $$k$$에 대하여 영향을 준다. (relate 되어 있다). 따라서, input layer의 $$i$$ 뉴런에서 hidden layer $$j$$ 뉴런을 연결하는 weight $$W_{ij}$$ 에 대한 $$E_p$$의 변화율은 다음과 같다.
+  
 
-   
-   $$
-   -{\partial{E_p}\over\partial{W_{ij}}} = -{\partial{E_p}\over{\partial{O_{pk}}}}{\partial{O_{pk}}\over\partial{(Input_{pk})}}{\partial{(Input_{pk})}\over\partial{O_{pj}}}{\partial{O_{pj}}\over\partial{(Input_{pj})}}{\partial{(Input_{pj})}\over\partial{W_{ij}}}\\
-      =\sum_{k}(d_{pk}-O_{pk}) f'(Input_{pk})W_{jk}f'(Input_{pj})X_{pi}\\
-      =\sum_{k}\delta_{pk}*W_{jk}*f'(Input_{pj})*X_{pi}
-   $$
-   
+   그림에서, $$W_{ij}$$는 $$Loss \ function$$ $$E_p$$에 모든 $$k$$에 대하여 영향을 준다. (relate 되어 있다). 따라서, input layer의 $$i$$ 뉴런에서 hidden layer $$j$$ 뉴런을 연결하는 weight $$W_{ij}$$ 에 대한 $$E_p$$의 변화율은 다음과 같다.
 
-    $$\partial{E_p}\over\partial{W_{ij}}$$는 이전 단계의 backpropagation $$\delta_{pk}$$ 에 weight를 곱하고, 자신의 derivated activation function에 자신의 입력을 곱한 값이된다.
+  
+  $$
+  -{\partial{E_p}\over\partial{W_{ij}}} = -{\partial{E_p}\over{\partial{O_{pk}}}}{\partial{O_{pk}}\over\partial{(Input_{pk})}}{\partial{(Input_{pk})}\over\partial{O_{pj}}}{\partial{O_{pj}}\over\partial{(Input_{pj})}}{\partial{(Input_{pj})}\over\partial{W_{ij}}}\\
+        =\sum_{k}(d_{pk}-O_{pk}) f'(Input_{pk})W_{jk}f'(Input_{pj})X_{pi}\\
+        =\sum_{k}\delta_{pk}*W_{jk}*f'(Input_{pj})*X_{pi}
+  $$
+  
 
-   
+  $$\partial{E_p}\over\partial{W_{ij}}$$는 이전 단계의 backpropagation $$\delta_{pk}$$ 에 weight를 곱하고, 자신의 derivated activation function에 자신의 입력을 곱한 값이된다.
 
    $$activation \ function$$ 이 sigmoid 함수일 경우, $$\partial{E_p}\over\partial{W_{ij}}$$ 는 다음과 같다.
 
-   
-   $$
-   {\partial{E_p}\over\partial{W_{ij}}}= \sum_k(d_{pk} - O_{pk})O_{pk}(1-O_{pk})W_{jk}*O_{pj}(1-O_{pj})X_{pi}\\
-      = \sum_k\delta_{pk}W_{jk}*O_{pj}(1-O_{pj})X_{pi}\\
-      = \delta_{pj}*X_{pi}\\
-      \left(\because \ \delta_{pj} = \sum_k\delta_{pk}W_{jk}*O_{pj}(1-O_{pj})\right)
-   $$
-   
+  
+  $$
+  {\partial{E_p}\over\partial{W_{ij}}}= \sum_k(d_{pk} - O_{pk})O_{pk}(1-O_{pk})W_{jk}*O_{pj}(1-O_{pj})X_{pi}\\
+        = \sum_k\delta_{pk}W_{jk}*O_{pj}(1-O_{pj})X_{pi}\\
+        = \delta_{pj}*X_{pi}\\
+        \left(\because \ \delta_{pj} = \sum_k\delta_{pk}W_{jk}*O_{pj}(1-O_{pj})\right)
+  $$
+  
 
-    $$\delta$$ 가 의미하는 바는 현재 단계의 backpropagate error이고, 이전단계의 backpropagate error * 해당 weight * 현재 뉴런의 activation function을 미분한 함수 이다)
+   $$\delta$$ 가 의미하는 바는 현재 단계의 backpropagate error이고, 이전단계의 backpropagate error * 해당 weight * 현재 뉴런의 activation function을 미분한 함수 이다) 
 
-   
-
-
-$$
-\delta_{j} = \sum\delta_{k}*W_{jk}*f'_j(input_j)
-$$
-
-
+  
+  $$
+  \delta_{j} = \sum\delta_{k}*W_{jk}*f'_j(input_j)
+  $$
+  
 
 9. 앞서 구한 weight에 대한 gradient를 통해 weight를 갱신한다.
 
@@ -340,12 +335,18 @@ $$
 
 3. 뉴런들의 출력과 가중치를 곱한 값을 합하여 Activation function에 통과시킨다. (입력 패턴 행렬을 Weight 행렬과 곱한 결과를 activation function에 통과시킨 결과가 출력패턴)
 
+   
 
-   $$
-   \mu_j(t+1) = f_b(\sum_{i=0}^{N-1}W_{ij}*\mu_i(t)) \ \ \ \ \ \ \ \ 0 \leq j \leq N-1
-   $$
+
+$$
+\mu_j(t+1) = f_b(\sum_{i=0}^{N-1}W_{ij}*\mu_i(t)) \ \ \ \ \ \ \ \ 0 \leq j \leq N-1
+$$
+
+
 
 4. 뉴런의 출력 ($$\mu_i$$) 가 변화가 없을 때 까지 3을 반복한다.
+
+
 
 
 
@@ -377,8 +378,9 @@ $$
 
 
 
-
  SOM은 여기서 추가적으로 다른 일반적인 learning과 달리 승자뉴런만 학습하는 것이 아니라, 승자뉴런과 인접한 뉴런들 역시 학습시킨다.
+
+
 
 
 
