@@ -27,7 +27,7 @@ title:	"Artificial Neural Network"
 
 ### Neuron(Perceptron)
 
-![Perceptron](../_img/2018-06-12/Perceptron.jpg)
+![Perceptron](../../../../_img/2018-06-12/Perceptron.jpg)
 
 
 
@@ -194,6 +194,8 @@ $$
    -{\partial{E_p}\over\partial{W_{jk}}} = (d_{pk}-O_{pk})f'(Input_{pk})O_{pj}
    $$
    이고, activation function이 $$sigmoid function$$일 경우,
+
+   
    $$
    y = f(x) = \frac{1}{1+e^{-x}}  \ \  \ \therefore {{\partial{y}}\over\partial{x}} = y(1-y)
    $$
