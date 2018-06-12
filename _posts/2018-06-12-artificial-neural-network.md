@@ -2,7 +2,7 @@
 layout: post
 title:	"Artificial Neural Network"
 
-
+comments: true
 ---
 
 # Artificial Neural Network
@@ -50,11 +50,12 @@ title:	"Artificial Neural Network"
 
 - $$o_j(t)$$ 는 뉴런 $$j$$의 output.
 
-  
+
   $$
   o_j = f(p_j, \theta_j)\\
   o_j = f(\sum_ip_j(t)-\theta_j)
   $$
+
 
 
 
@@ -167,47 +168,42 @@ $$
 
 3. 제시된 입력을 이용하여 Hidden layer의 $$j$$번째 뉴런으로의 입력은 다음과 같다.
 
-   
+
    $$
    Input_{pj} = \sum_{i}X_{pi}*W_{ij}-\theta_{j}
    $$
-   
 
 4. Activation function을 사용하여 Hidden layer의 출력 $$O_{pj}$$ 를 계산한다.
 
-   
+
    $$
    O_{pj} = f(Input_{pj})
    $$
-   
 
 5. Hidden layer의 출력을 이용하여 Output layer $$k$$번째 뉴런으로의 입력은 다음과 같다.
 
-   
+
    $$
    Input_{pk} = \sum_{j}O_{pj}*W_{jk}-\theta_{k}
    $$
-   
 
 6. Activation function을 사용하여 Output layer의 출력 $$O_{pk}$$를 계산한다.
 
-   
+
    $$
    O_{pk} = f(Input_{pk})
    $$
-   
 
 7. 출력 $$O_{pk}$$와 목표 출력 $$d_{pk}$$ 값을 비교하여 $$Error \ function= E_p$$  를 구한다.
 
-   
+
    $$
    E_p = \frac{1}{2}\sum_{k}(d_{pk}-O_{pk})^2
    $$
-   
 
 8. Neural network의 weight에 대한 gradient를 구한다. (각 가중치 $$W$$에 대한 $$E_p$$의 변화율)
 
-      
+  ​    
 
    ![backpropagation_step1](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/backpropagation_step1.png?raw=true)
 
@@ -221,7 +217,7 @@ $$
 
    $$k$$ 는 $$W_{jk}$$의 하나의 $$k$$만이 relate 되어 있으므로(하나의 $$k$$만 error에 영향),
 
-    
+   
    $$
    -{\partial{E_p}\over\partial{W_{jk}}} = (d_{pk}-O_{pk})f'(Input_{pk})O_{pj}
    $$
@@ -344,11 +340,10 @@ $$
 
 3. 뉴런들의 출력과 가중치를 곱한 값을 합하여 Activation function에 통과시킨다. (입력 패턴 행렬을 Weight 행렬과 곱한 결과를 activation function에 통과시킨 결과가 출력패턴)
 
-   
+
    $$
    \mu_j(t+1) = f_b(\sum_{i=0}^{N-1}W_{ij}*\mu_i(t)) \ \ \ \ \ \ \ \ 0 \leq j \leq N-1
    $$
-   
 
 4. 뉴런의 출력 ($$\mu_i$$) 가 변화가 없을 때 까지 3을 반복한다.
 
@@ -420,4 +415,3 @@ $$
 6. 모든 입력패턴 벡터를 처리할 때 까지 2부터 다시 반복한다.
 
 7. 이웃 반경을 감소시키면서 2~6 과정을 충분히 반복 학습시킨다.
-
