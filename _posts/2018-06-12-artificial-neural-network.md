@@ -27,7 +27,7 @@ title:	"Artificial Neural Network"
 
 ### Neuron(Perceptron)
 
-![Perceptron](../../../../_img/2018-06-12/Perceptron.jpg)
+![Perceptron](/Perceptron.jpg)
 
 
 
