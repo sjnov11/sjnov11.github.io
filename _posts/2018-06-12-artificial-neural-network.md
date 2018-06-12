@@ -27,7 +27,7 @@ title:	"Artificial Neural Network"
 
 ### Neuron(Perceptron)
 
-![Perceptron](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018-06-12/perceptron.JPG?raw=true)
+![Perceptron](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/perceptron.JPG?raw=true)
 
 
 
@@ -75,7 +75,7 @@ $$
 
 ### Chain rule
 
-![Chain rule](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018-06-12/chain%20rule.png?raw=true) 
+![Chain rule](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/chain%20rule.png?raw=true) 
 
  각 parameter 별로 Loss function에 대한 gradient를 구할 때, 미분의 chain rule에 의해서 다음과 같이 계산할 수 있다. 
 $$
@@ -140,7 +140,7 @@ $$
 
   
 
-![Error backpropagation](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018-06-12/Error%20backpropagation.png?raw=true)
+![Error backpropagation](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/Error%20backpropagation.png?raw=true)
 
 1. 모든 가중치 **$$W$$**와 임계치 $$\theta$$ 를 임의의 값으로 초기화 시킨다.
 
@@ -175,7 +175,7 @@ $$
 
      
 
-   ![backpropagation_step1](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018-06-12/backpropagation_step1.png?raw=true)
+   ![backpropagation_step1](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/backpropagation_step1.png?raw=true)
 
    Hidden layer의 $$j$$ 뉴런에서 output layer $$k$$ 뉴런을 연결하는 weight $$W_{jk}$$ 에 대한 $$E_p$$의 변화율은 다음과 같다.
    $$
@@ -200,7 +200,7 @@ $$
 
     
 
-   ![backpropagation_step2.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018-06-12/backpropagation_step2.png?raw=true)
+   ![backpropagation_step2.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/backpropagation_step2.png?raw=true)
 
     그림에서, $$W_{ij}$$는 $$Loss \ function$$ $$E_p$$에 모든 $$k$$에 대하여 영향을 준다. (relate 되어 있다). 따라서, input layer의 $$i$$ 뉴런에서 hidden layer $$j$$ 뉴런을 연결하는 weight $$W_{ij}$$ 에 대한 $$E_p$$의 변화율은 다음과 같다.
    $$
@@ -288,7 +288,7 @@ $$
 
  SOM이란 고차원 데이터의 각 개체들이 저차원(2,3 차원) 격자에 대응하도록 ANN 과 유사한 방식의 학습을 통해 clustering 하는 기법이다. 비슷한 위치의 뉴런은 비슷한 인지기능을 수행한다고 가정하여, 데이터가 유사할 수록 인접하거나 같은 저차원 격자에 연결된다.
 
-![self_organized_map](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018-06-12/self_organized_map.png?raw=true)
+![self_organized_map](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/self_organized_map.png?raw=true)
 
 
 
@@ -321,18 +321,18 @@ $$
 3. 입력패턴 벡터와 모든 출력 뉴런의 weight 벡터와의 거리를 계산한다.
 
 
-   $$
+$$
    d_j = \sum_i(X_i(t)-W_{ij}(t))^2 \ \ \  \ \ \ \ \ (j\mbox{는 출력 뉴런의 }index)
-   $$
+$$
 
 4. 최소 거리를 가지는 출력 뉴런이 가장 활성화 되는 승자 뉴런($$j^*$$)
 
 5. 승자 뉴런($$j^*$$)와 이웃 반경내의 뉴런들을 갱신한다.
 
 
-   $$
+$$
    W_{ij}(t+1) = W_{ij}(t) + \alpha(X_i(t)-W_{ij}(t))\ \  \ \ \ \  (j\mbox{는 }j* \mbox{와 인접한 모든 뉴런})
-   $$
+$$
 
 6. 모든 입력패턴 벡터를 처리할 때 까지 2부터 다시 반복한다.
 
