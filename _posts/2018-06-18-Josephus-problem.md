@@ -14,9 +14,10 @@
 
  이 문제의 해는 *n*명의 사람이 있을 때와, 한 명이 죽임을 당하고 난 *n-1*명의 사람이 있을 때를 비교하여, 점화식을 세우면 쉽게 해결할 수 있다.
 
-
+![josephus_1.JPG](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/17/josephus_1.JPG?raw=true) 
 
  *n* 과 *k* 가 주어졌을 때, 마지막에 살아남는 사람의 *index* 를 *Josephus(n, k)* 라고 하자. 위의 그림에서 *n=6* 이고 *k=3* 으로 주어졌다. 첫번째 *k*번째 사람을 죽이고 나서의 모습은 우측 그림과 같은 모습이다. 여기서 다시 count 하는 시작점을 0으로 두게 된다면, 빨간색 숫자의 경우에서 마지막으로 살아남는 사람의 *index*는 *Josephus(n-1, k)* 이다. 즉, *n=5* 인 경우에서 마지막으로 살아남는 사람의 *index* 에다가 *n=6*에서 한 사람을 죽인 다음 바뀐 위치를 더해주면(이 경우 k=3) 답을 쉽게 구할 수 있다. 
+
 $$
 Josephus(n, k) = (Josephus(n-1, k) + k) \ mod\  n \\
 Josephus(1,k) = 0
