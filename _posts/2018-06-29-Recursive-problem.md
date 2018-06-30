@@ -1,4 +1,4 @@
-# Recursive function의 stack overflow
+# SW Expert Arcademy #4534 트리 흑백 색칠
 
 [문제 #4534 트리 흑백 색칠] https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWO6esOKOKQDFAWw&categoryId=AWO6esOKOKQDFAWw&categoryType=CODE
 
@@ -9,6 +9,8 @@
 1. 완전 탐색시에 각 node에서 검은색 또는 흰색을 색칠할 수 있으므로 O($2^N$) 의 시간복잡도가 발생한다. *N* 이 최대 100,000 이므로, $2^{100,000}$  은 1억을 충분히 넘으므로 ($2^{10} ~= 1,000$)  완전 탐색으로는 풀 수 없다. Dynamic programming을 생각해 본다.
 
 2. 현재 node 에서 칠할 수 있는 경우는 흰색과 검은색이다. 현재 node의 색깔에 따라 자식 node를 색칠하는 경우의 수가 달라지기 때문에 이를 구분해 준다. 다음과 같은 경우로 나눌 수가 있다. 아래의 경우, 자식이 2개라고 가정하였다.
+
+
    $$
    f(node,white) = (f(child_1,white) + f(child_1,black))\\ *(f(child_2,white)+f(child_2,black)) \    \\ \ \\
    f(node,black) = f(child_1,white) *f(child_2,white)\\ \ \\
