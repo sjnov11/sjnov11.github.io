@@ -1,4 +1,12 @@
-# Josephus problem
+---
+layout: post
+title: "Josephus Problem"
+slug: "Josephus-problem"
+date: 2018-06-18 00:00:00 +0900
+categories: blog/algorithm
+---
+
+# Josephus Problem
 
 [참조]  www.geeksforgeeks.org/josephus-problem-set-1-a-on-solution 
 
