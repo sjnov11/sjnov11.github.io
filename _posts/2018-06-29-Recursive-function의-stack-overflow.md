@@ -1,0 +1,128 @@
+# Recursive function의 stack overflow
+
+[문제 #4534 트리 흑백 색칠] https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWO6esOKOKQDFAWw&categoryId=AWO6esOKOKQDFAWw&categoryType=CODE
+
+
+
+ 위의 문제를 풀어나가는 과정은 다음과 같았다.
+
+1. 완전 탐색시에 각 node에서 검은색 또는 흰색을 색칠할 수 있으므로 O($2^N$) 의 시간복잡도가 발생한다. *N* 이 최대 100,000 이므로, $2^{100,000}$  은 1억을 충분히 넘으므로 ($2^{10} ~= 1,000$)  완전 탐색으로는 풀 수 없다. Dynamic programming을 생각해 본다.
+
+2. 현재 node 에서 칠할 수 있는 경우는 흰색과 검은색이다. 현재 node의 색깔에 따라 자식 node를 색칠하는 경우의 수가 달라지기 때문에 이를 구분해 준다. 다음과 같은 경우로 나눌 수가 있다. 아래의 경우, 자식이 2개라고 가정하였다.
+   $$
+   f(node,white) = (f(child_1,white) + f(child_1,black))\\ *(f(child_2,white)+f(child_2,black)) \    \\ \ \\
+   f(node,black) = f(child_1,white) *f(child_2,white)\\ \ \\
+   f(node) = f(node,white) +f(node,black)
+   $$
+
+3. 간선의 입력에 따라서 여러 가지 형태의 트리가 구성될 수 있다. 하지만, 어디서부터 탐색을 시작하든 모든 node 들을 간선을 따라 경우의 수를 구하기 때문에 어디서 부터 탐색을 시작을 하든 상관이 없다.
+
+4. 간선을 따라 node를 탐색할 때, 이미 subtree의 탐색을 마친 node를 다시 방문할 수 있다. 이 경우를 caching 해 두어 빠르게 답을 구할 수 있도록 한다.
+
+
+
+```c++
+#include <iostream>
+#include <vector>
+#include <stdlib.h>
+using namespace std;
+
+#define MOD 1000000007
+long long cache[100000][2];
+bool visited[100000] = {false, };
+
+class Node {
+public:
+    int val;
+    int root;
+    vector<Node*> children;
+
+    Node(int v) {
+        val = v;
+        root = 1;
+    }
+};
+
+// white 0 black 1
+long long totalCaseNum(Node* node, int color) { 
+    visited[node->val] = true;
+    if (cache[node->val][color] > 0)
+        return cache[node->val][color];
+    
+    else {
+        vector<Node*>::iterator child_it;
+        long long ret = 1;
+        if (color == 0) {         
+            long long val = 1;
+            for (child_it = node->children.begin(); child_it != node->children.end(); ++child_it) { 
+                if (visited[(*child_it)->val]) {
+                    continue;
+                }
+                val = (val * ((totalCaseNum(*child_it, 0) + totalCaseNum(*child_it, 1)) % MOD)) % MOD;                  
+            }            
+            cache[node->val][color] = val;
+            
+        }
+        else if (color == 1) {  
+            long long val = 1;
+            for (child_it = node->children.begin(); child_it != node->children.end(); ++child_it) {
+                if (visited[(*child_it)->val]) {
+                    continue;
+                }
+                val = (val * (totalCaseNum(*child_it, 0) % MOD)) % MOD;                  
+            }
+            cache[node->val][color] = val;
+            
+        }
+        visited[node->val] = false;
+        return cache[node->val][color];
+    }
+}
+
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    int T;
+    cin >> T;
+    for (int test_case = 1; test_case <= T; test_case++) {
+        Node* node_list[100000];
+        int N;
+        cin >> N;
+        
+        for (int i = 0; i < N; i++) {
+            node_list[i] = new Node(i);
+        }
+        for (int i = 0; i < N - 1; i++) {
+            int first, second;
+            cin >> first >> second;
+
+            Node* parent;
+            Node* child;
+            parent = node_list[first- 1];
+            child = node_list[second - 1];
+            parent->children.push_back(child);
+            child->children.push_back(parent);
+        }
+       
+        Node* root = node_list[0];
+        long long result = (totalCaseNum(root, 0) % MOD + totalCaseNum(root, 1) % MOD) %MOD;
+        cout << "#" << test_case << " " << result << endl;
+
+        for (int i = 0; i < N; i++) {            
+            free(node_list[i]);
+            cache[i][0] = 0;
+            cache[i][1] = 0;
+            visited[i] = false;
+        }        
+    }
+    
+    return 0;
+}
+```
+
+
+
+
+
+ 
+

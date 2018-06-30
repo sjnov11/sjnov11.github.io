@@ -1,6 +1,6 @@
 # Josephus problem
 
-[참고]: https://www.geeksforgeeks.org/josephus-problem-set-1-a-on-solution/
+[참조]  www.geeksforgeeks.org/josephus-problem-set-1-a-on-solution 
 
 
 
@@ -30,21 +30,7 @@ $$
 
 ## SW Expert Arcademy #4411
 
-[문제#4411]: https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWNcL9nKpbEDFAV8	"덕환이의 카드뽑기"
-
-
-
->  희대의 카드 마술사 덕환이는 N개의 카드를 가지고 새로운 카드 뽑기 마술을 구상하고 있다.  덕환이는 카드를 한 더미로 쌓아 놓았는데, 각 카드에는 위에서 아래로 순서대로 1에서 N까지의 숫자가 적혀있다.  덕환이는 다음과 같이 카드를 뽑는 것을 반복한다.  
->
-> 1. 가장 위에 있는 카드를 가장 아래로 옮기는 작업을 K번 반복한다.  
-> 2. 가장 위에 있는 카드를 뽑는다. 
-> 3. 다시 1번으로 되돌아간다.   
->
->  위 과정을 반복하여 카드가 한 장 남을 때까지 카드를 뽑았을 때,  덕환이에게 마지막 남은 카드의 숫자가 무엇인지 알려주는 프로그램을 작성해보자.   
->
->  **[입력]**  첫 번째 줄에 테스트 케이스의 수 T가 주어진다.  각 테스트 케이스의 첫 번째 줄에는 두 정수 N,K(1 ≤ N ≤ $$10^7$$, 0 ≤ K ≤ $$10^{14}$$)가 공백으로 구분되어 주어진다.   
->
-> **[출력]**  테스트 케이스 T에 대한 결과는 “#T ”을 찍고, 각 테스트 케이스마다 가장 마지막에 남은 카드에 적힌 숫자를 출력한다 
+[문제 #4411 덕환이의 카드뽑기]  https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWNcL9nKpbEDFAV8
 
 
 
