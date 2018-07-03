@@ -12,6 +12,10 @@ categories: blog/Algorithm
 
 
 
+![segment_tree](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/07/03/segment_tree.JPG?raw=true)
+
+
+
 ### 단순 기존 방식과 Segment tree의 비교
 
  그렇다면 왜 Segment tree가 기존의 구간 탐색보다 더 효율적인 것일까? 
@@ -36,15 +40,23 @@ categories: blog/Algorithm
 
 
 
+![segment_tree5.JPG](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/07/03/segment_tree2.JPG?raw=true) 
+
+
+
  마찬가지로 $$[0,3]$$ 에 대한 정보를 찾고 싶다면 다음과 같이 탐색하면 된다.
 
-
+![segment_tree3.JPG](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/07/03/segment_tree3.JPG?raw=true) 
 
  찾고자 하는 구간에 대한 정보가 모두 찾아질 때까지 tree를 탐색하면 되므로 $$O(\log N)$$ 의 시간이 소요된다.
 
 
 
  만약 기존 data 가 업데이트 되어 구간에 대한 정보(답)가 바뀌었을 때는 어떻게 될까? 마찬가지로 tree를 탐색하면서 구간에 대한 정보를 업데이트 해주면 된다. 다음 예는 $$A[3]$$ 이 업데이트 되었을 때 segment tree가 업데이트 되는 모습이다.
+
+
+
+![segment_tree4.JPG](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/07/03/segment_tree4.JPG?raw=true) 
 
 
 
