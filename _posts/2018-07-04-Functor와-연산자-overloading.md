@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Functor와 연산자 overloading"
-slug: "segment-tree"
+slug: "functor-and-operator-overloading"
 date: 2018-07-04 17:59:00 +0900
 categories: blog/cpp
 ---
