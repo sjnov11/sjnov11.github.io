@@ -2,7 +2,7 @@
 layout: post
 title: "Union-Find 자료구조와 Undirected Graph의 Cycle Detection"
 slug: "union_find"
-date: 2018-08-20 22:46:00 +0900
+date: 2018-08-20 22:56:00 +0900
 categories: blog/algorithm
 ---
 
@@ -20,6 +20,8 @@ Union-Find는 서로소 집합(disjoint set)을 관리하는 자료구조이다.
 2) **Union(A, B)**: 요소 A가 속한 집합과 요소 B가 속한 집합을 합친다.
 
 다음의 예제에서 Find(1) == Find(2) 이고, Union(1, 3) 또는 Union(2, 3) 의 결과는 아래와 같다.
+
+![union-find_1.jpg](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/08/20/union-find_1.jpg?raw=true)
 
 
 
@@ -77,7 +79,9 @@ void union (int elem1, int elem2) {
 
 배열과는 달리 이 방법에서는 집합의 번호를 루트의 번호로 대신한다. 각 요소들의 부모를 저장해두면 루트까지 타고 올라갈 수 있으므로, 배열에서 요소들이 집합 번호를 담고 있던 것(set_num) 과 달리 요소들이 부모 요소를 찾아갈 수 있도록 parent 배열을 만든다. 이 parent 가 결국 트리의 adj_list를 만드는 것과 같다.
 
+![union-find_2.jpg](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/08/20/union-find_2.jpg?raw=true)
 
+#### 
 
 #### (1) 초기화
 

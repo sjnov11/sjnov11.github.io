@@ -2,7 +2,7 @@
 layout: post
 title: "크루스칼 알고리즘 (Kruskal's Algorithm) 과 프림 알고리즘 (Prim's Algorithm)"
 slug: "kruskal_prim"
-date: 2018-08-20 22:46:00 +0900
+date: 2018-08-20 23:46:00 +0900
 categories: blog/algorithm
 ---
 
@@ -25,7 +25,7 @@ categories: blog/algorithm
 5) 선택한 간선을 제외한다. 
 6) V-1개의 간선이 선택되었으면 종료, 아니면 다시 3)부터 수행한다.
 
-
+![kruskal.jpg](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/08/20/kruskal.jpg?raw=true)
 
 4) 에서 Cycle detection은 Union-Find 알고리즘을 이용한다.
 
@@ -34,8 +34,9 @@ categories: blog/algorithm
 ### 시간 복잡도
 
 2)에서 간선들의 정렬에 $$O(E\log{E})$$ 의 시간복잡도를, 
-3)에서 Cycle detection에 $$O(\log{V})$$ 를 최대 $$E$$ 번 수행하므로,
-$$O(E\log{E})$$ 의 시간복잡도를 갖는다. 여기서 $$E$$ 는 최대 $$V^2$$ 개 있을 수 있기 때문에, $$O(E\log{V})$$ 이다.
+3)에서 Cycle detection에 $$O(\log{V})$$ 를 최대 $$E$$ 번 수행하므로, $$O(E\log{V})$$ 의 시간복잡도를 갖는다. 여기서 $$E$$ 는 최대 $$V^2$$ 개 있을 수 있기 때문에, $$O(E\log{V})$$ 이다.
+
+![prim.jpg](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/08/20/prim.jpg?raw=true)
 
 
 
