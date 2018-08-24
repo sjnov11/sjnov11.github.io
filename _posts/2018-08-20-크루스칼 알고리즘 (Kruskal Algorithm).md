@@ -84,3 +84,6 @@ int prim(int start) {
 
 따라서, 총 시간복잡도는 $$O(V\log{V}) + O(E\log{V})$$ 이므로 $$O(E\log{V})$$ 가 된다.
 
+### 문제
+
+#1922: https://www.acmicpc.net/problem/1922
