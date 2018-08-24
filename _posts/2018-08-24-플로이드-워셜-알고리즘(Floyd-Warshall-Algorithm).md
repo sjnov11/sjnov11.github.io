@@ -17,6 +17,12 @@ categories: blog/algorithm
 
 플로이드-워셜 알고리즘은 최단경로를 Dynamic Programming 형태의 문제로 정의한다. 다음의 그래프를 살펴보자.
 
+
+
+![floyd-warshall.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/08/24/floyd-warshall.png?raw=true)
+
+
+
 정점 1에서 2로 가는 가장 짧은 경로를 찾는다고 하자. 다음 3가지의 경우가 존재할 수 있다. (물론 위 그래프에서 2)와 3)의 경우는 찾을 수 없지만 기본적으로 생각해야할 부분이다.)
 
 1) 정점 1에서 다른 정점을 거치지 않고 정점 2로 바로 가는 경우
@@ -27,10 +33,10 @@ categories: blog/algorithm
 
 
 $$
-A^0=\begin{bmatrix} 0 & 3 & \infin & 7 
-				\\ 8 & 0 & 2 &\infin
-				\\ 5 & \infin & 0 & 1
-				\\ 2 & \infin & \infin & 0\end{bmatrix}
+A^0=\begin{bmatrix} 0 & 3 & \infty & 7 
+				\\ 8 & 0 & 2 &\infty
+				\\ 5 & \infty & 0 & 1
+				\\ 2 & \infty & \infty & 0\end{bmatrix}
 $$
 
 
@@ -41,10 +47,10 @@ $$ A^0$$ 는 그래프를 인접행렬로 나타낸 것과 같으며, 한 정점
 
 $$
 A^1 = 	\begin{bmatrix} 
-		0 & 3 & \infin & 7\\
+		0 & 3 & \infty & 7\\
 		8 & 0 & 2 & 15\\
 		5 & 8 & 0 & 1\\
-		2 & 8 & \infin & 0
+		2 & 8 & \infty & 0
 		\end{bmatrix}
 $$
 
