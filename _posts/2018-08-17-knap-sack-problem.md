@@ -32,6 +32,7 @@ Knapsack Problem의 최적해는 단순하게 모든 item들의 조합으로 구
 최적해는 다음 두 경우 중 최대가 되는 경우이다.
 
 1) $$n-1$$ 개의 item들로 $$W$$ 를 채우는 경우 ($$n$$ 번째 item이 안 들어가는 경우)
+
 2) $$n$$ 번째 item이 포함되고, $$n-1$$ 개의 item들로 $$W-w[n]$$  를 채우는 경우 ($$n$$ 번째 item이 들어가는 경우)
 
 따라서, 최적해를 위와 같이 2개의 부분문제로 나눌 수 있다. 
@@ -47,3 +48,63 @@ Knapsack Problem의 최적해는 단순하게 모든 item들의 조합으로 구
 2) $$n$$ 번째 item 미선택. $$n-1$$ 번째 item 선택. $$n-2$$ 번째 item 미선택.
 
 두 경우 모두 남은 item이 $$n-3$$ 개로 같고, 무게 또한 $$W-20$$ 으로 같다.
+
+
+
+
+
+## Top-down 방식
+
+Top-down 방식은 Optimal Substructure의 점화식을 그대로 이용하면 된다. $$n$$ 개의 item을 무게  $$W$$ 를 넘지 않도록 담을 때 가치의 최대값을 $$dp[n][W] $$ 라고 하자. 그럼 다음과 같은 점화식을 세울 수 있다.
+
+
+$$
+dp[n][W] = \max (dp[n-1][W], dp[n-1][W-w[n]]+p[n])
+$$
+
+
+```c++
+int dp(int n, int W) {
+	if (dp[n][W] != -1) 
+		return dp[n][W];
+	// Base case
+    if (n == 0 || W == 0) {
+        return 0;
+    }
+    
+    if (W - w[n] < 0) {
+        dp[n][W] = dp(n-1, W);
+    }
+    else {
+        dp[n][W] = max(dp(n-1, W), dp(n-1, W-weight[n]) + p[n]);
+    }
+    return dp[n][W];
+}
+```
+
+
+
+
+
+## Bottom-Up 방식
+
+먼저 base case로 item이 존재하지 않을 경우와 무게가 0인 경우에 가치는 0으로 둔다. 다음으로 $$n$$ 번째 item 부터 무게 $$w$$ 일 때, 차례로 넣는다. 만약 $$n$$ 번째 item의 무게가 $$w$$ 보다 크면 넣을 수 없으므로 $$n$$ 번째 item을 넣지 않은 $$dp[n-1][w]$$ 가 된다. 넣을 수 있는 경우라면, 넣었을 때 가치 ( $$n$$ 번째 item의 가치 + 1번째 ~ $$n-1$$번째 item을 무게 $$w-weight[n]$$ 에 넣을 때 최대 가치 ) 와 넣지 않았을 때의 가치 중 ($$dp[n-1][w]$$) 최대가 되는 것을 고른다.
+
+```c++
+int dp(int N, int W) {
+	for (int n = 0; n <= N; n++) {
+    	for (int w = 0; w <= W; w++) {
+        	if (n == 0 || w == 0)
+        		dp[n][w] = 0;
+        	if (w - weight[n] < 0) {
+    	        dp[n][w] = dp[n-1][w];
+	        }
+        	else {
+            	dp[n][w] = max(dp[n-1][w], dp[n-1][w-weight[n]] + p[n]);
+        	}
+   		}
+	}
+    return dp[N][W];
+}
+```
+
