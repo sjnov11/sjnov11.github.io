@@ -18,8 +18,8 @@ email: sjnov11@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   ?ˆë…•?˜ì„¸??:)
   Hello :)
-baseurl: "" # the subpath of your site, e.g. /blog
-url: https://sjnov11.github.io # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: / 
+url: https://sjnov11.github.io
 #twitter_username: 
 github_username:  sjnov11
 
