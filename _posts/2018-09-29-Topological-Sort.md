@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Topological Sort"
+title: "Topological Sort(위상 정렬)"
 slug: "topological-sort"
 date: 2018-09-29 18:46:00 +0900
 categories: blog/algorithm
