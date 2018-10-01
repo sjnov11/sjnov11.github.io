@@ -37,15 +37,25 @@ categories: blog/data_structure
 
 아래 예를 살펴보자.
 
-
-
 1. 가장 마지막 위치에 새 노드 4 를 삽입한다.
+
+
+   ![heap_insertion_1](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_insertion_1.png?raw=true)
 
 2. 부모 노드 9와의 대소 관계를 살펴본다. 최소 힙 조건을 만족하지 않으므로 둘의 위치를 바꾼다.
 
+
+   ![heap_insertion_2](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_insertion_2.png?raw=true)
+
 3. 부모 노드 6과의 대소 관계를 살펴본다. 최소 힙 조건을 만족하지 않으므로 둘의 위치를 바꾼다.
 
+
+   ![heap_insertion_3](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_insertion_3.png?raw=true)
+
 4. 부모 노드 1과의 대소 관계를 살펴본다. 최소 힙 조건을 만족하므로 종료한다.
+
+
+   ![heap_insertion_4](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_insertion_4.png?raw=true)
 
 
 
@@ -64,15 +74,25 @@ categories: blog/data_structure
 
 아래의 예를 살펴보자.
 
-
-
 1. 루트 노드 1은 리턴 값이 된다. 루트 노드에 마지막 노드 9를 가져온다.
+
+
+   ![heap_deletion_1](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_deletion_1.png?raw=true)
 
 2. 가져온 노드 9와 자식 4,자식 3 과 대소 관계를 살펴본다. 최소 힙 조건을 만족하지 않으므로 최소 힙을 만족할 수 있는 가장 작은 값 3과 바꾼다.
 
+
+   ![heap_deletion_2](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_deletion_2.png?raw=true)
+
 3. 가져온 노드 9와 자식 9, 자식 7과 대소 관계를 살펴본다. 최소 힙 조건을 만족하는 가장 작은 값 7과  바꾼다.
 
+
+   ![heap_deletion_3](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_deletion_3.png?raw=true)
+
 4. 자식이 더 이상 존재하지 않으므로 종료한다.
+
+
+   ![heap_deletion_4](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/01/heap_deletion_4.png?raw=true)
 
 
 
