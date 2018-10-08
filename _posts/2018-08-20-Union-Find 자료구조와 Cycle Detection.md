@@ -1,14 +1,15 @@
 ---
 layout: post
-title: "Union-Find 자료구조와 Undirected Graph의 Cycle Detection"
+title: "Union-Find 알고리즘와 Undirected Graph의 Cycle Detection"
 slug: "union_find"
 date: 2018-08-20 22:56:00 +0900
+update: 2018-10-02 13:43:00 +0900
 categories: blog/algorithm
 ---
 
 
 
-# Union-Find 자료구조와 Undirected Graph의 Cycle Detection
+# Union-Find 알고리즘과 Undirected Graph의 Cycle Detection
 
 
 
@@ -32,6 +33,8 @@ Union-Find는 서로소 집합(disjoint set)을 관리하는 자료구조이다.
 
 
 ### 1) 배열을 이용한 구현 방법
+
+그래프의 각 정점이 어떤 set 에 속하는 지 배열에 담아두는 방법이다. 위 예제 초기 그림에서 set_num[1] = 1, set_num[2] = 1, set_num[3] = 2, set_num[4] = 3 이다.
 
 #### (1) 초기화
 
@@ -85,28 +88,26 @@ void union (int elem1, int elem2) {
 
 #### (1) 초기화
 
-배열을 이용한 구현과 같다. 초기 상태에서 부모가 없으므로 자기 자신을 부모로 둔다. (혹은 -1을 두어도 좋다)
+배열을 이용한 구현과 같다. 초기 상태에서 부모가 없으므로 자기 자신을 부모로 둔다. 혹은 -1을 두어도 좋다. 필자는 루트 노드의 부모를 랭크* (-1)로 표현하였다.
 
 ```c++
-//code by RiKang, weeklyps.com
-struct union_find{
-    vector<int> parent;  
-    void init(int n){ 
-        parent.resize(n + 1);
-        for(int i = 1; i <= n; i++)
-            parent[i] = i;
+vector<int> parent;
+void init(int V) {
+    parent.resize(V+1);
+    for (int i = 1; i <= V; i++) {
+        parent[i] = -1;
     }
-}uf;
+}
 ```
 
 #### (2) Find
 
-parent가 자기자신(혹은 -1)이 나올 때 까지 부모를 계속 탐색한다. ($$O(\log{N})$$)
+parent가 자기자신(혹은 음수)이 나올 때 까지 부모를 계속 탐색한다. ($$O(\log{N})$$)
 
 ```c++
-int find(int elem1) {
-    if (parent[elem1] == elem1) return elem1;
-    return find(parent[elem1]);
+int find(int e) {
+    if (parent[e] < 0) return e;
+    return find(parent[e]);
 }
 ```
 
@@ -115,16 +116,84 @@ int find(int elem1) {
 Union은(elem1을 기준) elem2의 루트를 elem1의 루트의 자식으로 달아주면 된다. ($$O(\log{N})$$) 
 
 ```c++
-void union (int elem1, int elem2) {
-    int r1 = find(elem1);
-    int r2 = find(elem2);
+void uni (int e1, int e2) {
+    int r1 = find(e1);
+    int r2 = find(e2);
     parent[r2] = r1;
 }
 ```
 
 Union시 최악의 경우 LinkedList 형태처럼 줄줄이 달릴 수가 있다. 두 집합 중 높이가 낮은 트리를 높은 트리 아래에 넣어두면 최악의 경우를 피할 수 있다. 
 
-#### 
+ ```c++
+void uni (int e1, int e2) {
+    int r1 = find(e1);
+    int r2 = find(e2);
+    int rank_r1 = parent[r1] * (-1);
+    int rank_r2 = parent[r2] * (-1);
+    
+    if (rank_r1 > rank_r2) 
+    	parent[r2] = r1;
+    else {
+        parent[r1] = r2;
+        if (rank_r1 == rank_r2) 
+        	parent[r2]--;
+    }
+}
+ ```
+
+
+
+## Python 코드
+
+```python
+class DisjointSet_list:
+    def __init__(self, V):
+        self.V = V
+        self.set_list = [v for v in range(self.V + 1)] 
+        
+    def find(self, e):
+        return self.set_list[e]
+
+    def union(self, e1, e2):
+        remove_set_num = self.find(e2)
+        for v, set_num in enumerate(self.set_list):
+            if set_num == remove_set_num:
+                self.set_list[v] = e1
+
+
+class DisjointSet_tree:
+    def __init__(self, V):
+        self.V = V
+        self.parent_list = [-1 for v in range(V+1)]
+
+    def find(self, e):
+        parent = self.parent_list[e]
+        if parent < 0:
+            return e
+        return self.find(parent)
+
+    def union(self, e1, e2):
+        r1 = self.find(e1)
+        r2 = self.find(e2)
+
+        if r1 == r2:
+            return
+
+        rank_r1 = self.parent_list[r1] * (-1)
+        rank_r2 = self.parent_list[r2] * (-1)
+
+        if rank_r1 > rank_r2:
+            self.parent_list[r2] = r1
+        else:
+            self.parent_list[r1] = r2
+            if rank_r1 == rank_r2:
+                self.parent_list[r2]-=1
+```
+
+
+
+
 
 ## Undirected Graph의 Cycle Detection
 

@@ -3,6 +3,7 @@ layout: post
 title: "크루스칼 알고리즘 (Kruskal's Algorithm) 과 프림 알고리즘 (Prim's Algorithm)"
 slug: "kruskal_prim"
 date: 2018-08-20 23:46:00 +0900
+update: 2018-10-02 14:50:00 +0900
 categories: blog/algorithm
 ---
 
@@ -49,6 +50,10 @@ categories: blog/algorithm
 3) 찾은 간선의 두 노드 중 MST에 없는 노드를 MST에 포함시킨다.
 4) 모든 노드가 T에 포함될 때 까지 2)와 3)을 반복한다.
 
+
+
+### C++ 코드
+
 ```c++
 int prim(int start) {
 	priority_queue<pair<int, int>> q;
@@ -76,9 +81,42 @@ int prim(int start) {
 
 
 
+### Python 코드
+
+```python
+V = 4
+adj_list =[[] for v in range (V+1)]
+visited = [False for _ in range(V+1)]
+
+def addEdge(u, v, w):
+    adj_list[u].append((w, v))
+    adj_list[v].append((w, u))
+
+
+def prim(s):
+    import heapq
+    pq = []
+    for adj_v in adj_list[s]:
+        heapq.heappush(pq, adj_v)
+    visited[s] = True
+    answer = 0
+    while pq:
+        w, v = heapq.heappop(pq)
+        if visited[v]:
+            continue
+        for adj_v in adj_list[v]:
+            heapq.heappush(pq, adj_v)
+        visited[v] = True
+        answer += w
+
+    return answer
+```
+
+
+
 ### 시간 복잡도
 
-하나의 정점(vertex) 에서 나가는 이진 힙(priority_queue) 에는 최대 $$V$$ 개의 간선 정보가 있을 수 있다. 따라서, 최악의 경우 $$V$$ 번 pop을 하여야 다음 방문할 정점을 구할 수 있으므로, 이진 힙에서 방문하지 않은 정점을 고를 때, 최대 $$O(V\log{E})$$ 의 시간이 걸린다. 크루스칼과 마찬가지로 $$E \leq V^2$$ 이므로 $$O(V\log{V})$$ 이다. 
+하나의 정점(vertex) 에서 최대 $$V$$ 개의 간선 정보가 있을 수 있다. 따라서, 최악의 경우 $$V$$ 번 pop을 하여야 다음 방문할 정점을 구할 수 있으므로, 이진 힙에서 방문하지 않은 정점을 고를 때, 최대 $$O(V\log{E})$$ 의 시간이 걸린다. 크루스칼과 마찬가지로 $$E \leq V^2$$ 이므로 $$O(V\log{V})$$ 이다. 
 
 현재 정점과 연결된 다음 정점의 간선 정보를 이진 힙에 넣는 부분(while문에 중첩된 for문)에서는 모든 간선에 대해서 한번씩 수행된다. 따라서 시간 복잡도는 $$O(E\log{E})$$ 이고, $$E\leq V^2$$ 이므로 $$O(E\log{V})$$ 이다.
 
