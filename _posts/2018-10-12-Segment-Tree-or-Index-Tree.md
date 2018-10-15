@@ -27,6 +27,8 @@ categories: blog/algorithm
 
 $$N$$ 개의 시퀀스형 자료가 있다고 하자. $$2^M \geq N$$ 을 만족하는 가장 작은 $$M$$ 에 대하여, $$2^M$$ 개의 리프 노드로 구성된 **포화 이진 트리(Full Binary Tree)** 를 만든다. 리프 노드는 시퀀스 자료가 순서대로 들어가 있으며, 비어있는 노드는 0으로 채운다. 예를 들어, 배열 [3,5,2,9,1,7] 로 구성한 포화 이진 트리는 아래 그림과 같다. 각 노드에서 노란색 범위는 자료의 구간을 나타내며, 흰 숫자는 구간의 합을 나타낸다.
 
+![segment_tree.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/12/segment_tree.png?raw=true)
+
 ### 코드
 
 ```
@@ -38,6 +40,8 @@ $$N$$ 개의 시퀀스형 자료가 있다고 하자. $$2^M \geq N$$ 을 만족�
 ## 구간합 구하기 (1번 연산)
 
 위의 예제에서 구간 [2:4] 의 합을 구해보자. 아래 그림에서 빨간색으로 색칠된 노드들의 탐색을 마치면 답을 구할 수 있다.
+
+![segment_tree_find_sum.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/12/segment_tree_find_sum.png?raw=true)
 
 
 
@@ -67,6 +71,8 @@ $$N$$ 개의 시퀀스형 자료가 있다고 하자. $$2^M \geq N$$ 을 만족�
 값을 바꾸면 해당 자료를 구간으로 담고있는 모든 노드들 - 바꾸는 자료값을 담는 리프 노드에서 루트 노드까지의 노드들- 을 업데이트 해주어야 한다. 예제에서 3번 노드의 값을 8로 바꾸었을 때, 변경해야하는 노드들을 빨간색 노드로 나타내면 다음과 같다.
 
 
+
+![segment_tree_update.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/12/segment_tree_update.png?raw=true)
 
 ### 코드
 

@@ -14,6 +14,10 @@ categories: blog/algorithm
 
 **위상 정렬**은 사이클이 없는 방향 그래프(**DAG**: Directed Acyclic Graph) 에서 방향성을 거스리지 않게 정점(vertex)들을 나열하는 알고리즘이다. 
 
+![topological_sort1.png](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/09/29/topological_sort1.png?raw=true)
+
+
+
 위 그래프는 사이클이 없는 방향 그래프(DAG) 이다. 정점 4에 정점 1과 정점 2가 연결되어 있는데, 이는 1과 2가 4보다 먼저 나오도록 정렬해야함을 의미한다. 일반화 하면, 간선 ***(u, v)*** 가 있을 경우 정점 **u** 는 정점 **v** 보다 항상 먼저 나와야한다.
 
 위상정렬을 가장 잘 설명해 줄 수 있는 예로 대학의 선이수과목(prerequisite) 구조를 예로 들 수 있다. 만약 특정 수강과목에 선수과목이 있다면 그 선수 과목부터 수강해야 한다. 이와 같이 **선후 관계가 정의된 그래프 구조 상에서 선후 관계에 따라 정렬하기 위해 위상 정렬을 이용**할 수 있다.
