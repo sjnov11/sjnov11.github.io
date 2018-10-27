@@ -22,7 +22,9 @@ Virtual Machine에서 guest OS를 돌릴 때 여러 불편한 점이 있습니�
 
 VirtualBox로 guest OS를 실행시킵니다. 터미널에서 **ifconfig **를 입력하면 다음과 같이 나옵니다.
 
-![1540627864049](C:\Users\u_nov\AppData\Roaming\Typora\typora-user-images\1540627864049.png)
+![ifconfig](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/27/ifconfig.JPG?raw=true)
+
+
 
 enp0s3(혹은 eth0)에서 guest IP 10.0.2.15 를 확인할 수 있습니다 (참고로, lo는 loop back interface, virbr0는 virtual network interface 입니다). guest OS의 IP를 확인했으니 위 IP 주소로 SSH 연결을 하면 될 것 같지만 연결이 되지 않습니다.
 
@@ -36,11 +38,15 @@ enp0s3(혹은 eth0)에서 guest IP 10.0.2.15 를 확인할 수 있습니다 (참
 
 *VirtualBox -설정* 에서 네트워크 탭으로 들어가면 다음과 같은 화면이 나옵니다.
 
-![1540629460380](C:\Users\u_nov\AppData\Roaming\Typora\typora-user-images\1540629460380.png)
+![port_forwarding](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/27/port_forwarding_1.JPG?raw=true)
+
+
 
 *고급 - 포트 포워딩* 을 클릭합니다.
 
-![1540629600293](C:\Users\u_nov\AppData\Roaming\Typora\typora-user-images\1540629600293.png)
+![port_forwarding_2](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/27/port_forwarding_2.JPG?raw=true)
+
+
 
 SSH 연결에 대한 포트 포워딩을 설정합니다. Host IP의 127.0.0.1은 loop back을 의미하고, guest IP의 10.0.2.15는 앞서 확인한 guest OS의 private IP 입니다. Host port는 원하시는 port를 사용하시면 되고, guest port는 SSH protocol인 22를 입력하고 저장합니다.
 
@@ -50,17 +56,21 @@ SSH 연결에 대한 포트 포워딩을 설정합니다. Host IP의 127.0.0.1�
 
 원격 접속을 하려면 먼저 guest OS를 실행해야 합니다. 어짜피 원격접속으로 터미널을 사용할 것이라면 헤드리스 시작으로 리소스 사용을 최소화 해줍시다.
 
-![1540629905777](C:\Users\u_nov\AppData\Roaming\Typora\typora-user-images\1540629905777.png)
+![headless_start](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/27/headless_start.JPG?raw=true)
 
 
 
 PuTTY를 실행시키고, 앞서 설정했던 포트 포워딩 규칙대로 접속합니다.
 
-![1540630178619](C:\Users\u_nov\AppData\Roaming\Typora\typora-user-images\1540630178619.png)
+![putty_conn_1](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/27/putty_conn_1.JPG?raw=true)
+
+
 
 로그인하면 guest OS의 터미널이 출력됩니다.
 
-![1540630344699](C:\Users\u_nov\AppData\Roaming\Typora\typora-user-images\1540630344699.png)
+![putty_conn_2](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/10/27/putty_conn_2.JPG?raw=true)
+
+
 
 
 
