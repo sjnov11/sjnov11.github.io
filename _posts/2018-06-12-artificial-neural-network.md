@@ -32,7 +32,7 @@ categories: blog/AI
 
 
 
-- $X_i(t)$ 는 input vector의 $$i$$th component. 
+- $$$X_i(t)$$$ 는 input vector의 $$i$$th component. 
 
 - $$w_{ij}$$ 는 $$X_i$$의 weight.
 
