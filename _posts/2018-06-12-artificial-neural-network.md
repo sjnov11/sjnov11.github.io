@@ -32,7 +32,7 @@ categories: blog/AI
 
 
 
-- $$$X_i(t)$$$ 는 input vector의 $$i$$th component. 
+- $$X_i(t)$$ 는 input vector의 $$i$$th component. 
 
 - $$w_{ij}$$ 는 $$X_i$$의 weight.
 
@@ -40,11 +40,11 @@ categories: blog/AI
 
 - $$p_j(t)$$ 는 뉴런 $$j$$로 들어오는 input vector의 weighted sum.
 
-  
+
   $$
   p_j(t) = \sum_{i} X_i(t)*w_{ij}
   $$
-  
+
 
 
 - $$f$$ 는 activation function
