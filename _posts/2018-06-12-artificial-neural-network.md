@@ -32,7 +32,7 @@ categories: blog/AI
 
 
 
-- $$X_i(t)$$ 는 input vector의 $$i$$th component. 
+- $X_i(t)$ 는 input vector의 $$i$$th component. 
 
 - $$w_{ij}$$ 는 $$X_i$$의 weight.
 
@@ -159,7 +159,6 @@ $$
 
 - Weight 갱신은 gradient descent rule로 error를 최소화 하는 방식
 
-  
 
 ![Error backpropagation](https://github.com/sjnov11/sjnov11.github.com/blob/master/_img/2018/06/12/Error%20backpropagation.png?raw=true)
 
@@ -276,7 +275,6 @@ $$
 
 9. 앞서 구한 weight에 대한 gradient를 통해 weight를 갱신한다.
 
-   
 
 
 $$
@@ -312,7 +310,6 @@ $$
 
 1. M개의 초기 학습패턴을 이용하여 N개 뉴런의 weight를 설정한다. (weight matrix로 표현)
 
-   
 
 
 $$
@@ -324,7 +321,6 @@ $$
 
 2. 입력 패턴을 Hopfield memory 에 제시한다.
 
-   
 
 
 $$
@@ -335,7 +331,6 @@ $$
 
 3. 뉴런들의 출력과 가중치를 곱한 값을 합하여 Activation function에 통과시킨다. (입력 패턴 행렬을 Weight 행렬과 곱한 결과를 activation function에 통과시킨 결과가 출력패턴)
 
-   
 
 
 $$
@@ -392,7 +387,6 @@ $$
 
 3. 입력패턴 벡터와 모든 출력 뉴런의 weight 벡터와의 거리를 계산한다.
 
-   
 
 
 $$
@@ -405,7 +399,6 @@ $$
 
 5. 승자 뉴런($$j^*$$)와 이웃 반경내의 뉴런들을 갱신한다.
 
-   
 
 
 $$

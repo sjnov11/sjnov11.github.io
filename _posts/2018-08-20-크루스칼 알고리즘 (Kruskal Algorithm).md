@@ -58,16 +58,19 @@ categories: blog/algorithm
 int prim(int start) {
 	priority_queue<pair<int, int>> q;
 	q.push(make_pair(0, start));
-
+	
 	int ret = 0;
+    int cnt = 0;
 	while (!q.empty()) {
 		int cur = q.top().second;
 		int cur_w = q.top().first;
 		q.pop();
-
 		if (visited[cur]) continue;
+        
 		visited[cur] = true;
 		ret += cur_w*(-1);
+        cnt++;        
+        if (cnt == V) break; 	// V 는 정점의 갯수
 		for (auto next : adj_list[cur]) {
 			int v = next.first;
 			int w = next.second;
@@ -116,9 +119,9 @@ def prim(s):
 
 ### 시간 복잡도
 
-하나의 정점(vertex) 에서 최대 $$V$$ 개의 간선 정보가 있을 수 있다. 따라서, 최악의 경우 $$V$$ 번 pop을 하여야 다음 방문할 정점을 구할 수 있으므로, 이진 힙에서 방문하지 않은 정점을 고를 때, 최대 $$O(V\log{E})$$ 의 시간이 걸린다. 크루스칼과 마찬가지로 $$E \leq V^2$$ 이므로 $$O(V\log{V})$$ 이다. 
+하나의 정점(vertex) 에서 최대 $$V$$ 개의 간선 정보가 존재한다. 따라서, 최악의 경우 $$V$$ 번 pop을 하여야 다음 방문할 정점을 구할 수 있다. 이 경우, 이진 힙의 크기는 $$V$$ 이므로, 이진 힙에서 방문하지 않은 정점을 고를 때 최대 $$O(V\log{V})$$ 의 시간이 걸린다. (마지막 정점을 제외하고 모두 한번의 pop으로 선택되고, 마지막 정점은 나머지 모든 간선을 pop하는 경우도 amortized 로 같다)
 
-현재 정점과 연결된 다음 정점의 간선 정보를 이진 힙에 넣는 부분(while문에 중첩된 for문)에서는 모든 간선에 대해서 한번씩 수행된다. 따라서 시간 복잡도는 $$O(E\log{E})$$ 이고, $$E\leq V^2$$ 이므로 $$O(E\log{V})$$ 이다.
+현재 정점과 연결된 다음 정점의 간선 정보를 이진 힙에 넣는 부분(while문에 중첩된 for문)에서는 모든 간선에 대해서 한번씩 수행된다. 따라서 시간 복잡도는 $$O(E\log{V})$$ 이다.
 
 따라서, 총 시간복잡도는 $$O(V\log{V}) + O(E\log{V})$$ 이므로 $$O(E\log{V})$$ 가 된다.
 
