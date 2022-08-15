@@ -14,10 +14,6 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-
-url: https://sjnov11.github.io
-baseurl: / 
-
 title: King
 email: sjnov11@gmail.com
 description: Development and Algorithm
